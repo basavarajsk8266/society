@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/api/employee")
 public class EmployeeController {
+
     private EmployeeService employeeService;
 
     @Autowired
@@ -31,4 +32,14 @@ public class EmployeeController {
         employeeDto = employeeService.save(employeeDto);
         return ResponseEntity.status(HttpStatus.CREATED).body(employeeDto);
     }
+
+//    @GetMapping("/{id}")
+//    public ResponseEntity<EmployeeResponseModel> findEmployeeById(){
+//        EmployeeResponseModel employeeResponseModel = new EmployeeResponseModel();
+//        //employeeResponseModel.setEmployees(employeeService.findById(findEmployeeById()));
+//        employeeResponseModel.setDataCount(employeeResponseModel.getEmployees().size());
+//        return ResponseEntity.status(HttpStatus.OK).body(employeeResponseModel);
+//
+//    }
+
 }

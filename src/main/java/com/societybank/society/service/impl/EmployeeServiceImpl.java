@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
@@ -41,6 +42,11 @@ public class EmployeeServiceImpl implements EmployeeService {
         List<EmployeeDto> employeesList = Arrays.asList(modelMapper.map(employees, EmployeeDto[].class));
         return employeesList;
     }
+
+//    @Override
+//    public Optional<EmployeeDto> findById(Long id){
+//        return employeeRepository.findById(id);
+//    }
 
 
 }
