@@ -8,6 +8,8 @@ import java.io.Serializable;
 @Data
 public class EmployeeDto implements Serializable {
 
+    private Integer id;
+
     private String empName;
 
     private Integer mobileNumber;

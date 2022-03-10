@@ -7,6 +7,8 @@ import java.time.LocalDate;
 
 @Data
 public class SubscriberDto implements Serializable {
+
+    private Integer id;
     private Integer mobileNumber;
     private String firstName;
     private String lastName;

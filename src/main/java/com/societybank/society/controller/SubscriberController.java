@@ -2,7 +2,10 @@ package com.societybank.society.controller;
 
 import com.societybank.society.dto.SubscriberDto;
 import com.societybank.society.dto.SubscriberResponseModel;
+import com.societybank.society.entity.SubscriberEntity;
 import com.societybank.society.service.SubscriberService;
+import org.modelmapper.ModelMapper;
+import org.modelmapper.convention.MatchingStrategies;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -31,5 +34,25 @@ public class SubscriberController {
     public ResponseEntity<SubscriberDto> createSubscribers(@RequestBody SubscriberDto subscriberDto){
         subscriberDto = subscriberService.save(subscriberDto);
         return ResponseEntity.status(HttpStatus.CREATED).body(subscriberDto);
+    }
+
+    @GetMapping("{id}")
+    public ResponseEntity<SubscriberDto> findSubscriberById(@PathVariable Integer id){
+        SubscriberEntity subscriberEntity = subscriberService.findById(id).get();
+        ModelMapper modelMapper = new ModelMapper();
+        modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
+        SubscriberDto subscriberDto = modelMapper.map(subscriberEntity, SubscriberDto.class);
+        return ResponseEntity.status(HttpStatus.OK).body(subscriberDto);
+    }
+
+    @PutMapping("/update")
+    public ResponseEntity<SubscriberDto> updateSubscrobers(@RequestBody SubscriberDto subscriberDto){
+        subscriberDto = subscriberService.update(subscriberDto);
+        return ResponseEntity.status(HttpStatus.CREATED).body(subscriberDto);
+    }
+
+    @DeleteMapping("{id}")
+    public void deleteSubscriber(@PathVariable Integer id){
+        subscriberService.deleteSubscriber(id);
     }
 }

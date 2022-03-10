@@ -43,10 +43,26 @@ public class EmployeeServiceImpl implements EmployeeService {
         return employeesList;
     }
 
-//    @Override
-//    public Optional<EmployeeDto> findById(Long id){
-//        return employeeRepository.findById(id);
-//    }
+    @Override
+    public Optional<EmployeeEntity> findById(Integer id) {
+        return employeeRepository.findById(id);
+    }
+
+    @Override
+    public EmployeeDto update(EmployeeDto employees) {
+        ModelMapper modelMapper = new ModelMapper();
+        modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
+        EmployeeEntity employeeEntity = modelMapper.map(employees, EmployeeEntity.class);
+        employeeRepository.save(employeeEntity);
+        EmployeeDto returnData = modelMapper.map(employeeEntity, EmployeeDto.class);
+        return returnData;
+    }
+
+    @Override
+    public void deleteEmployee(Integer id) {
+        employeeRepository.deleteById(id);
+
+    }
 
 
 }
