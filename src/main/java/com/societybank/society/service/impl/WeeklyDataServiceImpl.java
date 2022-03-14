@@ -1,8 +1,6 @@
 package com.societybank.society.service.impl;
 
-import com.societybank.society.dto.SubscriberDto;
 import com.societybank.society.dto.WeeklyDataDto;
-import com.societybank.society.entity.SubscriberEntity;
 import com.societybank.society.entity.WeeklyDataEntity;
 import com.societybank.society.repository.WeeklyDataRepository;
 import com.societybank.society.service.WeeklyDataService;

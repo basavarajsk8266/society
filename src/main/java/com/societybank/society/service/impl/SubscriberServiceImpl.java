@@ -1,8 +1,6 @@
 package com.societybank.society.service.impl;
 
-import com.societybank.society.dto.EmployeeDto;
 import com.societybank.society.dto.SubscriberDto;
-import com.societybank.society.entity.EmployeeEntity;
 import com.societybank.society.entity.SubscriberEntity;
 import com.societybank.society.repository.SubscriberRepository;
 import com.societybank.society.service.SubscriberService;
